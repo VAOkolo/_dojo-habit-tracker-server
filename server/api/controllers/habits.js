@@ -13,12 +13,24 @@ router.get('/', async (req, res) => {
     }
 })
 
+
 router.get('/:email', async (req, res) => {
     try {
         const habits = await Habit.findByEmail(req.params.email)
-        // console.log(posts)
-        res.json({habits})
+        res.json(habits)
     } catch(err) {
+        res.status(500).json({err})
+    }
+})
+
+router.get('/:id', async (req, res) => {
+    try {
+        console.log(req.params.id)
+        const habitList = await Habit.findByHabit(req.params.id)
+        console.lo
+        res.json({habitList})
+    } catch(err) {
+        console.log(err)
         res.status(500).json({err})
     }
 })

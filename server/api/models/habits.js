@@ -42,6 +42,20 @@ class Habit {
             try {
                 const db = await init();
                 let habitData = await db.collection('habits').find({"email": email }).toArray()
+                console.log(habitData)
+                // let habits = new Habit({...habitData[0], email: habitData[0].email});
+                resolve (habitData);
+            } catch (err) {
+                reject('Habits not found');
+            }
+        });
+    }
+
+    static findByHabit (id) {
+        return new Promise (async (resolve, reject) => {
+            try {
+                const db = await init();
+                let habitData = await db.collection('habits').find({"id": id}).toArray()
                 let habits = new Habit({...habitData[0], email: habitData[0].email});
                 resolve (habits);
             } catch (err) {
@@ -50,11 +64,30 @@ class Habit {
         });
     }
 
+/** 
+ * user creates new habit = triggers create function
+ * user updates habit
+ *  - check whether date exists within users habit
+ *  - running {
+ *  dates {
+ *  id
+ *  specific date;
+ *  status of running
+ * },
+ * {
+ * id
+ * specific date2;
+ * status of running;
+ * }
+ * else we create new data
+*/
+
     update(dateId) {
         return new Promise (async (resolve, reject) => {
             try {
                 const db = await init();
-                await db.collection('habits').updateOne({ dates: {dateid: datesId }},
+                dateChecker()
+                await db.collection('habits').updateOne({ dates: {dateid: dateId }},
                                                             { $set: { "complete": dates.complete }})
                 resolve("habit was updated");
             } catch (err) {
