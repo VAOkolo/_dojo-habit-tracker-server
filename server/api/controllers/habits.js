@@ -45,7 +45,25 @@ router.post('/', async (req, res) => {
     }
 })
 
-//updating users new habit
+router.delete('/:id', async (req, res) => {
+    try {
+        const post = await Habit.findByHabit(req.params.id)
+        await post.destroy()
+        res.status(204).json('Post deleted')
+    } catch(err) {
+        res.status(500).json({err})
+    }
+})
 
+//updating users new habit
+// router.put('/:id', async (req, res) => {
+//     try {
+//         const habit = await Habit.findByHabit(req.params.id)
+//         await habit.update(req.body.dates)
+//         res.status(204).json('Post updated')
+//     } catch(err){
+//         res.status(500).json({err})
+//     }
+// })
 
 module.exports = router;

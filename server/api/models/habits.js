@@ -57,10 +57,10 @@ class Habit {
             try {
                 const db = await init();
                 let habitData = await db.collection('habits').find({_id: ObjectId(id)}).toArray()
+                let habits = new Habit({...habitData[0], id: habitData[0]._id});
                 console.log("*********")
-                console.log(habitData)
+                console.log(habits)
                 console.log("*********")
-                let habits = new Habit({...habitData[0], email: habitData[0].email});
                 resolve (habits);
             } catch (err) {
                 reject('Habits not found');
@@ -86,23 +86,35 @@ class Habit {
  * else we create new data
 */
 
-    update(dateId) {
-        return new Promise (async (resolve, reject) => {
+    // update(dateId) {
+    //     return new Promise (async (resolve, reject) => {
+    //         try {
+    //             const db = await init();
+    //             dateChecker()
+    //             await db.collection('habits').updateOne({ dates: {dateid: dateId }},
+    //                                                         { $set: { "complete": dates.complete }})
+    //             resolve("habit was updated");
+    //         } catch (err) {
+    //             console.log(err)
+    //             reject(err, 'Error updating post');
+    //         }
+    //     });
+    // }
+
+    destroy(){
+        return new Promise(async(resolve, reject) => {
             try {
                 const db = await init();
-                dateChecker()
-                await db.collection('habits').updateOne({ dates: {dateid: dateId }},
-                                                            { $set: { "complete": dates.complete }})
-                resolve("habit was updated");
+                console.log("****************")
+                console.log(this.id)
+                console.log("***************")
+                await db.collection('habits').deleteOne({ _id: ObjectId(this.id) })
+                resolve('Habit was deleted')
             } catch (err) {
-                console.log(err)
-                reject(err, 'Error updating post');
+                reject('Habit could not be deleted')
             }
-        });
+        })
     }
-
-    
-
 }
 
 module.exports = Habit
