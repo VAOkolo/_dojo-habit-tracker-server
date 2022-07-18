@@ -5,20 +5,26 @@ db.habits.drop()
 db.login.drop()
 
 
-db.userInfo.insertMany([
-    { userid: 111, habitid: "running", date: `18 july 2022.`, status: "complete"},
-    { userid: 112, habitid: "drinking water", date: `18 july 2022.`, status: "undone"},
-    { userid: 111, habitid: "running", date: `19 july 2022.`, status: "complete"}])
+// db.userInfo.insertMany([
+//     { userid: 111, habitid: "running", date: `18 july 2022.`, status: "complete"},
+//     { userid: 112, habitid: "drinking water", date: `18 july 2022.`, status: "undone"},
+//     { userid: 111, habitid: "running", date: `19 july 2022.`, status: "complete"}])
 
 
 db.habits.insertMany([
-    {habit: "running"},
-    {habit: "sleeping"},
-    {habit: "drinking water"},
-    {habit: "meditating"}])
+    {content: "running", email: "vincent@gmail.com", dates: [{
+        date: "2022-18-22",
+        complete: "no"
+    },{
+        date: "2022-18-22",
+        complete: "no"
+    },{
+        date: "2022-18-22",
+        complete: "yes"
+    }], updatedAt: "18 July 2022"}])
 
 
-db.login.insertMany([
+db.users.insertMany([
     {username: "dojo", email: "dojo@getgmail.com", password: "12345"},
     {username: "test1", email: "dojo@getgmail.com", password: "12345"},
     {username: "test2", email: "dojo@getgmail.com", password: "12345"},
