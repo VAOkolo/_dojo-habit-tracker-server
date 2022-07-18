@@ -3,6 +3,7 @@ const router = express.Router()
 
 const Habit = require('../models/habits')
 
+//getting all user habit data
 router.get('/', async (req, res) => {
     try {
         console.log("TESTING")
@@ -13,7 +14,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-
+//getting all users (users) habit data
 router.get('/:email', async (req, res) => {
     try {
         const habits = await Habit.findByEmail(req.params.email)
@@ -23,11 +24,10 @@ router.get('/:email', async (req, res) => {
     }
 })
 
-router.get('/:id', async (req, res) => {
+//getting specific habit
+router.get('/:email/:id', async (req, res) => {
     try {
-        console.log(req.params.id)
-        const habitList = await Habit.findByHabit(req.params.id)
-        console.lo
+        const habitList = await Habit.findByHabit(req.params.id, req.params.email)
         res.json({habitList})
     } catch(err) {
         console.log(err)
@@ -35,6 +35,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+//posting new habit
 router.post('/', async (req, res) => {
     try {
         const habit = Habit.create(req.body.content, req.body.email)
@@ -43,5 +44,8 @@ router.post('/', async (req, res) => {
         res.status(404).json({err})
     }
 })
+
+//updating users new habit
+
 
 module.exports = router;

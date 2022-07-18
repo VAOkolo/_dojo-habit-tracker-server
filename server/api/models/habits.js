@@ -28,7 +28,8 @@ class Habit {
         return new Promise (async (resolve, reject) => {
             try {
                 const db = await init();
-                let habitData = await db.collection('habits').insertOne({content, email})
+                const dates = []
+                let habitData = await db.collection('habits').insertOne({content, email, dates})
                 let newHabit = new Habit(habitData.ops[0])
                 resolve(newHabit)
             } catch(err) {
@@ -51,11 +52,14 @@ class Habit {
         });
     }
 
-    static findByHabit (id) {
+    static findByHabit (id, email) {
         return new Promise (async (resolve, reject) => {
             try {
                 const db = await init();
-                let habitData = await db.collection('habits').find({"id": id}).toArray()
+                let habitData = await db.collection('habits').find({_id: ObjectId(id)}).toArray()
+                console.log("*********")
+                console.log(habitData)
+                console.log("*********")
                 let habits = new Habit({...habitData[0], email: habitData[0].email});
                 resolve (habits);
             } catch (err) {

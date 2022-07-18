@@ -1,6 +1,6 @@
 const db = connect("mongodb://localhost:27017/habittracker")
 
-db.userInfo.drop()
+// db.userInfo.drop()
 db.habits.drop()
 db.login.drop()
 
@@ -14,6 +14,26 @@ db.login.drop()
 db.habits.insertMany([
     {content: "running", email: "vincent@gmail.com", dates: [{
         date: "2022-18-22",
+        complete: "yes"
+    },{
+        date: "2022-18-22",
+        complete: "no"
+    },{
+        date: "2022-18-22",
+        complete: "yes"
+    }]},
+    {content: "cooking", email: "test@gmail.com", dates: [{
+        date: "2022-18-22",
+        complete: "yes"
+    },{
+        date: "2022-18-22",
+        complete: "no"
+    },{
+        date: "2022-18-22",
+        complete: "no"
+    }]},
+    {content: "skating", email: "vincent@gmail.com", dates: [{
+        date: "2022-18-22",
         complete: "no"
     },{
         date: "2022-18-22",
@@ -21,7 +41,7 @@ db.habits.insertMany([
     },{
         date: "2022-18-22",
         complete: "yes"
-    }], updatedAt: "18 July 2022"}])
+    }]}])
 
 
 db.users.insertMany([
