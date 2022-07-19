@@ -23,6 +23,7 @@ class Habit {
         })
     }
 
+    //creates new habit with empty dates array
     static create (content, email) {
         return new Promise (async (resolve, reject) => {
             try {
@@ -37,6 +38,7 @@ class Habit {
         })
     }
 
+    //pulls in all habits under one email 
     static findByEmail (email) {
         return new Promise (async (resolve, reject) => {
             try {
@@ -51,6 +53,7 @@ class Habit {
         });
     }
 
+    //doesn't require email input
     static findByHabit (id, email) {
         return new Promise (async (resolve, reject) => {
             try {
@@ -64,6 +67,7 @@ class Habit {
         });
     }
 
+    //date object doesn't require unique id (at least for now) as the date itself can function as it
     update(dates) {
         return new Promise (async (resolve, reject) => {
             try {
