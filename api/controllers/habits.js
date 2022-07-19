@@ -38,7 +38,7 @@ router.get('/:email/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const habit = Habit.create(req.body.content, req.body.email)
-        res.json(habit)
+        res.send(habit)
     } catch (err) {
         res.status(404).json({err})
     }
