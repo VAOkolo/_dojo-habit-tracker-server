@@ -13,7 +13,11 @@ class Habit {
         return new Promise (async (resolve, reject) => {
             try {
                 const db = await init()
+                console.log("*************")
+                console.log(db)
+                console.log("*************")
                 const habitData = await db.collection('habits').find().toArray()
+                
                 const habits = habitData.map(h => new Habit({...h, id: h._id}))
                 resolve(habits);
             } catch (err) {
