@@ -13,7 +13,6 @@ class Habit {
         return new Promise (async (resolve, reject) => {
             try {
                 const db = await init()
-                console.log(db)
                 const habitData = await db.collection('habits').find().toArray()
                 const habits = habitData.map(h => new Habit({...h, id: h._id}))
                 resolve(habits);
@@ -58,9 +57,6 @@ class Habit {
                 const db = await init();
                 let habitData = await db.collection('habits').find({_id: ObjectId(id)}).toArray()
                 let habits = new Habit({...habitData[0], id: habitData[0]._id});
-                console.log("*********")
-                console.log(habits)
-                console.log("*********")
                 resolve (habits);
             } catch (err) {
                 reject('Habits not found');
@@ -68,46 +64,24 @@ class Habit {
         });
     }
 
-/** 
- * user creates new habit = triggers create function
- * user updates habit
- *  - check whether date exists within users habit
- *  - running {
- *  dates {
- *  id
- *  specific date;
- *  status of running
- * },
- * {
- * id
- * specific date2;
- * status of running;
- * }
- * else we create new data
-*/
-
-    // update(dateId) {
-    //     return new Promise (async (resolve, reject) => {
-    //         try {
-    //             const db = await init();
-    //             dateChecker()
-    //             await db.collection('habits').updateOne({ dates: {dateid: dateId }},
-    //                                                         { $set: { "complete": dates.complete }})
-    //             resolve("habit was updated");
-    //         } catch (err) {
-    //             console.log(err)
-    //             reject(err, 'Error updating post');
-    //         }
-    //     });
-    // }
+    update(dates) {
+        return new Promise (async (resolve, reject) => {
+            try {
+                const db = await init();
+                await db.collection('habits').updateOne({_id: ObjectId(this.id)},
+                                                            { $set: {dates: dates}})
+                resolve("habit was updated");
+                } catch (err) {
+                console.log(err)
+                reject(err, 'Error updating post');
+            }
+        });
+    }
 
     destroy(){
         return new Promise(async(resolve, reject) => {
             try {
                 const db = await init();
-                console.log("****************")
-                console.log(this.id)
-                console.log("***************")
                 await db.collection('habits').deleteOne({ _id: ObjectId(this.id) })
                 resolve('Habit was deleted')
             } catch (err) {
