@@ -24,7 +24,7 @@ router.get('/:email', async (req, res) => {
 })
 
 //getting specific habit
-router.get('/:email/:id', async (req, res) => {
+router.get('/id/:id', async (req, res) => {
     try {
         const habitList = await Habit.findByHabit(req.params.id, req.params.email)
         res.json({habitList})
