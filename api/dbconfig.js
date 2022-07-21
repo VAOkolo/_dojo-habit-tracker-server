@@ -1,16 +1,10 @@
-// require('dotenv').config()
 const { MongoClient } = require('mongodb')
-
-// use for docker
-const connectionUrl = process.env.DB_CONNECTION; 
-
-// use for heroku
-// const connectionUrl =  process.env.MONGODB_URI;  
+const connectionUrl = process.env.DB_CONNECTION;
 
 const dbName = process.env.DB_NAME
 
 const init = async () => {
-    let client = await MongoClient.connect(connectionUrl)
+    client = await MongoClient.connect(connectionUrl)
     console.log('connected to database!', dbName)
     return client.db(dbName)
 }
