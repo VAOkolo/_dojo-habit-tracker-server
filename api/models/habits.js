@@ -58,14 +58,11 @@ class Habit {
     }
 
     //doesn't require email input
-    static findByHabit (id) {
+    static findByHabit (id, email) {
         return new Promise (async (resolve, reject) => {
             try {
                 const db = await init();
-                console.log("***********")
-                // console.log(db)
                 let habitData = await db.collection('habits').find({_id: ObjectId(id)}).toArray()
-                console.log(habitData)
                 let habits = new Habit({...habitData[0], id: habitData[0]._id});
                 resolve (habits);
             } catch (err) {
@@ -75,24 +72,12 @@ class Habit {
     }
 
     //date object doesn't require unique id (at least for now) as the date itself can function as it
-    update(date, status, note) {
+    update(dates) {
         return new Promise (async (resolve, reject) => {
             try {
                 const db = await init();
-                if(this.dates.some(d => d.date == date)){
-                    for(let i=0;i<this.dates.length; i++){
-                        if(this.dates[i].date == date){
-                            this.dates[i].complete = status
-                            this.dates[i].note = note
-                            break;
-                        } 
-                    }
-                } else {
-                    this.dates.push({date: date, complete: status, note: note})
-                }
-
                 await db.collection('habits').updateOne({_id: ObjectId(this.id)},
-                                                            { $set: {dates: this.dates}})
+                                                            { $set: {dates: dates}})
                 resolve("habit was updated");
                 } catch (err) {
                 console.log(err)
