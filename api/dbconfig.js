@@ -2,10 +2,10 @@
 const { MongoClient } = require('mongodb')
 
 // use for docker
-const connectionUrl = process.env.DB_CONNECTION; 
+// const connectionUrl = process.env.DB_CONNECTION; 
 
 // use for heroku
-// const connectionUrl =  process.env.MONGODB_URI;  
+const connectionUrl =  process.env.MONGODB_URI;  
 
 const dbName = process.env.DB_NAME
 
