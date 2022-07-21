@@ -13,7 +13,7 @@ const userRoutes = require('./routes/users')
 //
 server.use('/habits', habitRoutes)
 // server.use('/auth', authRoutes )
-server.use('/user', userRoutes)
+// server.use('/user', userRoutes)
 server.get('/', (req, res) => res.send('Hello, dojo!'))
 
 module.exports = server

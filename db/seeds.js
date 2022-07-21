@@ -2,6 +2,7 @@ const db = connect("mongodb://localhost:27017/habittracker")
 
 // db.userInfo.drop()
 db.habits.drop()
+db.login.drop()
 db.users.drop()
 
 
