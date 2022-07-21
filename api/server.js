@@ -7,6 +7,7 @@ server.use(cors())
 server.use(express.json())
 
 //routes
+
 const habitRoutes = require('./routes/habits')
 const authRoutes = require('./controllers/auth')
 const userRoutes = require('./controllers/users')
