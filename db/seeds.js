@@ -1,6 +1,6 @@
 const db = connect("mongodb://localhost:27017/habittracker")
 
-// db.userInfo.drop()
+db.userInfo.drop()
 db.habits.drop()
 db.login.drop()
 
@@ -13,35 +13,55 @@ db.login.drop()
 
 db.habits.insertMany([
     {content: "running", email: "vincent@gmail.com", dates: [{
-        date: "2022-18-22",
-        complete: "yes"
+        date: "7/15/2022",
+        complete: "incomplete",
+        note: {
+            createdAt: "",
+            editedAt: "",
+            text: ""
+        }
     },{
-        date: "2022-18-22",
-        complete: "no"
+        date: "7/16/2022",
+        complete: "complete",
+        note: {
+            createdAt: "",
+            editedAt: "",
+            text: ""
+        }
     },{
-        date: "2022-18-22",
-        complete: "yes"
+        date: "7/17/2022",
+        complete: "complete",
+        note: {
+            createdAt: "",
+            editedAt: "",
+            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        }
     }]},
-    {content: "cooking", email: "test@gmail.com", dates: [{
-        date: "2022-18-22",
-        complete: "yes"
-    },{
-        date: "2022-18-22",
-        complete: "no"
-    },{
-        date: "2022-18-22",
-        complete: "no"
-    }]},
-    {content: "skating", email: "vincent@gmail.com", dates: [{
-        date: "2022-18-22",
-        complete: "no"
-    },{
-        date: "2022-18-22",
-        complete: "no"
-    },{
-        date: "2022-18-22",
-        complete: "yes"
-    }]}])
+        {content: "swimming", email: "vincent@gmail.com", dates: [{
+            date: "7/15/2022",
+            complete: "incomplete",
+            note: {
+                createdAt: "",
+                editedAt: "",
+                text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+            }
+        },{
+            date: "7/16/2022",
+            complete: "complete",
+            note: {
+                createdAt: "",
+                editedAt: "",
+                text: ""
+            }
+        },{
+            date: "7/17/2022",
+            complete: "complete",
+            note: {
+                createdAt: "",
+                editedAt: "",
+                text: ""
+            }
+        }]}])
 
 
 db.users.insertMany([

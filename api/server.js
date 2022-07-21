@@ -1,5 +1,4 @@
 const express = require('express')
-
 const cors = require('cors')
 
 const server = express()
@@ -15,6 +14,7 @@ const habitRoutes = require('./routes/habits')
 server.use('/habits', habitRoutes)
 // server.use('/auth', authRoutes )
 // server.use('/user', userRoutes)
+
 server.get('/', (req, res) => res.send('Hello, dojo!'))
 
 module.exports = server
