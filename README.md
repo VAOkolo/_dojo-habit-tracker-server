@@ -1,6 +1,6 @@
 # Welcome to Dojo!
 
-Dojo is the name of our habit tracker, where users can sign up and register an account with us! Users can then login into their account and start tracking their habits. Want to track how many laps you have done this week for swimming? You can! Or do you want to track you running habits in the month of July? You can now with Dojo!
+Dojo is the name of our habit tracker, where users can sign up and register an account with us! Users can then login into their account and start tracking their habits. Want to track how many laps you have done this week for swimming? You can! Or do you want to track you running habits in the month of July? You can now with Dojo! You can also track you habits in a pie chart to see how well you are doing!
 
 ## Table of Contents
 
@@ -43,11 +43,11 @@ Dojo is the name of our habit tracker, where users can sign up and register an a
 
 #### Sign up to Dojo...
 
-![Screenshot]()
+![Screenshot](./assets/login.png)
 
 #### ...and start tracking your own habits!
 
-![Screenshot]()
+![Screenshot](./assets/calendar.png)
 
 ## Technologies used
 
@@ -58,7 +58,7 @@ Dojo is the name of our habit tracker, where users can sign up and register an a
 
 #### HTML/CSS/JS Tools
 
-- 
+- Watchify
 
 ## Changelog
 
@@ -94,15 +94,15 @@ Dojo is the name of our habit tracker, where users can sign up and register an a
 ## Bugs
 
 - auth.js and user.js are unable to be deployed to heroku, ongoing issue
-- 
 
 ## Goals for the Future!
 
-- 
-- 
-- 
-- 
-- 
+- Add more functionality to our metrics page e.g. period on period tracking
+- Missed a day adding notes to a habit, day fills in red
+- Checking boxes on click
+- Social components 
+    - ability to view streaks 
+- Reward systems for those who complete a week streak 
 
 ---
 ## Minimum Viable Product
@@ -110,16 +110,16 @@ Dojo is the name of our habit tracker, where users can sign up and register an a
 ### Prework
 
 - [x] write this README
-- [x] design using Lucid
+- [x] design using Fignma
 - [x] fill Trello board
 
 ### Functionality
 
-- [x] 
-- [x] 
-- [x] 
-- [x] 
-- [x] 
+- [x] login page
+- [x] register page
+- [x] can view notes of habits
+- [x] store habits in users account
+- [x] track habits
 
 ### Technical
 
